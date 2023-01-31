@@ -1,4 +1,5 @@
 var express = require('express');
+var fortune = require('./lib/fortune.js');
 var app = express();
 app.set('port', process.env.PORT || 3000);
 // 设置 handlebars 视图引擎
@@ -14,7 +15,7 @@ app.get('/', function(req, res){
 });
 app.get('/about', function(req, res){
     res.status(200)
-    res.render('about')
+    res.render('about',{fortuneCookie:fortune.getFortune()})
 });
 app.get('/about1', function(req, res){
     res.status(500)
